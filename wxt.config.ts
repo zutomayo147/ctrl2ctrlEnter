@@ -6,7 +6,11 @@ export default defineConfig({
   manifest: {
     name: 'Google Chat 誤送信防止「enter2ctrlEnter」',
     permissions: ['storage'],
-    host_permissions: ['https://chat.google.com/*'],
+    host_permissions: [
+      'https://chat.google.com/*',
+      'https://gemini.google.com/*',
+      'https://chatgpt.com/*'
+    ],
   },
   // --- ここから加筆 ---
   runner: {

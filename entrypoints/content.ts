@@ -2,7 +2,13 @@ import { settingsStorage } from '@/utils/storage';
 import { evaluateKeyEvent } from '@/utils/interceptor';
 
 export default defineContentScript({
-  matches: ['https://chat.google.com/*', 'https://mail.google.com/chat/*', 'https://mail.google.com/mail/*'],
+  matches: [
+    'https://chat.google.com/*',
+    'https://mail.google.com/chat/*',
+    'https://mail.google.com/mail/*',
+    'https://gemini.google.com/*',
+    'https://chatgpt.com/*'
+  ],
   allFrames: true,
   runAt: 'document_start',
   async main() {
