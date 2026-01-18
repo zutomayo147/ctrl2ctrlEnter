@@ -18,7 +18,7 @@ describe('evaluateKeyEvent', () => {
       it('should allow Ctrl+Enter', () => {
         const event = { key: 'Enter', type: 'keydown', ctrlKey: true, metaKey: false, shiftKey: false, isComposing: false } as any;
         const result = evaluateKeyEvent(event, mode, isMac);
-        expect(result.action).toBe('allow');
+        expect(result.action).toBe('ignore');
       });
 
       it('should ignore Meta+Enter', () => {
@@ -88,8 +88,8 @@ describe('evaluateKeyEvent', () => {
       
       // Mac - Ignore/Passthrough
       expect(evaluateKeyEvent(event, mode, true).action).toBe('ignore');
-      // Windows - Allow/Force
-      expect(evaluateKeyEvent(event, mode, false).action).toBe('allow');
+      // Windows - Allow/Force -> Ignore/Passthrough
+      expect(evaluateKeyEvent(event, mode, false).action).toBe('ignore');
     });
   });
 });

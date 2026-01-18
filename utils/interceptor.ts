@@ -47,11 +47,11 @@ export function evaluateKeyEvent(
 
   // Should we allow/force this event? (modifier present and required)
   if ((isCtrlReq && hasCtrl) || (isMetaReq && hasMeta)) {
-    // On Mac, Cmd+Enter usually works natively. Synthesizing 'Enter' (without modifiers) 
-    // might fail or be blocked. It's safer to pass through (ignore) for Mac.
-    if (isMac) return { action: 'ignore' };
-    
-    return { action: 'allow' };
+    // We used to synthesize a plain 'Enter' here (action: 'allow').
+    // However, most chat apps (Google Chat, etc.) natively support Ctrl+Enter/Cmd+Enter.
+    // Synthesizing an event often fails (untrusted event) or is unnecessary.
+    // We should just pass through (ignore) the native event.
+    return { action: 'ignore' };
   }
 
   return { action: 'ignore' };
