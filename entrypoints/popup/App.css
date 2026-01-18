@@ -1,0 +1,85 @@
+#root {
+  width: 300px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  text-align: left;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  color: #1a73e8;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: #5f6368;
+  margin: 0;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option:hover {
+  background-color: #f8f9fa;
+  border-color: #bdc1c6;
+}
+
+.option.active {
+  background-color: #e8f0fe;
+  border-color: #1a73e8;
+}
+
+.option input[type="radio"] {
+  margin-top: 0.25rem;
+}
+
+.option-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.key-combo {
+  font-weight: 500;
+  font-size: 0.9375rem;
+  color: #202124;
+}
+
+.key-desc {
+  font-size: 0.75rem;
+  color: #5f6368;
+}
+
+.footer {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f3f4;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: #9aa0a6;
+  margin: 0;
+}
