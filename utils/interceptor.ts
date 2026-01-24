@@ -47,9 +47,6 @@ export function evaluateKeyEvent(
 
   // Should we allow/force this event? (modifier present and required)
   if ((isCtrlReq && hasCtrl) || (isMetaReq && hasMeta)) {
-    // For many sites, we can just ignore and let the native event pass.
-    // However, some sites (like Google Sheets) might need a explicit un-modified Enter
-    // synthesized to trigger the default behavior when we're blocking the plain Enter.
     return { action: 'allow' };
   }
 

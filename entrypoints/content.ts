@@ -48,19 +48,29 @@ export default defineContentScript({
         }
       } else if (result.action === 'allow' && event.type === 'keydown') {
         if (event.target instanceof HTMLElement) {
-          const newEvent = new KeyboardEvent('keydown', {
+          const common = {
             key: 'Enter',
             code: 'Enter',
             keyCode: 13,
             which: 13,
             bubbles: true,
             cancelable: true,
-          } as any);
-          (newEvent as any)._isSynthesized = true;
+          };
+
+          const keydownEvent = new KeyboardEvent('keydown', common as any);
+          const keypressEvent = new KeyboardEvent('keypress', common as any);
+          const keyupEvent = new KeyboardEvent('keyup', common as any);
+
+          (keydownEvent as any)._isSynthesized = true;
+          (keypressEvent as any)._isSynthesized = true;
+          (keyupEvent as any)._isSynthesized = true;
           
           event.preventDefault();
           event.stopImmediatePropagation();
-          event.target.dispatchEvent(newEvent);
+          
+          event.target.dispatchEvent(keydownEvent);
+          event.target.dispatchEvent(keypressEvent);
+          event.target.dispatchEvent(keyupEvent);
         }
       }
     };
