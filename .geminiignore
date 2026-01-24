@@ -7,7 +7,6 @@
 **/coverage/
 **/.wxt/
 **/package-lock.json
-**/yarn.lock
 
 # OS files
 .DS_Store
