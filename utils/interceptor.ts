@@ -47,11 +47,10 @@ export function evaluateKeyEvent(
 
   // Should we allow/force this event? (modifier present and required)
   if ((isCtrlReq && hasCtrl) || (isMetaReq && hasMeta)) {
-    // We used to synthesize a plain 'Enter' here (action: 'allow').
-    // However, most chat apps (Google Chat, etc.) natively support Ctrl+Enter/Cmd+Enter.
-    // Synthesizing an event often fails (untrusted event) or is unnecessary.
-    // We should just pass through (ignore) the native event.
-    return { action: 'ignore' };
+    // For many sites, we can just ignore and let the native event pass.
+    // However, some sites (like Google Sheets) might need a explicit un-modified Enter
+    // synthesized to trigger the default behavior when we're blocking the plain Enter.
+    return { action: 'allow' };
   }
 
   return { action: 'ignore' };

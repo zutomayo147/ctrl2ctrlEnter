@@ -11,6 +11,7 @@ export default defineConfig({
       "https://mail.google.com/*",
       "https://gemini.google.com/*",
       "https://chatgpt.com/*",
+      "https://docs.google.com/spreadsheets/*",
     ],
   },
   // --- ここから加筆 ---
@@ -29,6 +30,7 @@ export default defineConfig({
       'https://mail.google.com/chat/u/0/#chat/',
       'https://gemini.google.com',
       'https://chatgpt.com',
+      'https://docs.google.com/spreadsheets',
     ],
   },
   // --- ここまで加筆 ---
