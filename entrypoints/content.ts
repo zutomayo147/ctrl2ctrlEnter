@@ -4,7 +4,7 @@ import { evaluateKeyEvent } from '@/utils/interceptor';
 export default defineContentScript({
   matches: [
     'https://chat.google.com/*',
-    // 'https://mail.google.com/*',
+    'https://mail.google.com/*',
     'https://gemini.google.com/*',
     'https://chatgpt.com/*'
   ],

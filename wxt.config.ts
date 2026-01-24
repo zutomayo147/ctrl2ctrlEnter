@@ -26,6 +26,7 @@ export default defineConfig({
     // 起動時に自動で開くページ
     startUrls: [
       'https://chat.google.com',
+      'https://mail.google.com/chat/u/0/#chat/',
       'https://gemini.google.com',
       'https://chatgpt.com',
     ],
