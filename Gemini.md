@@ -1,0 +1,88 @@
+# Gemini.md
+
+## 0. 前提（言語）
+
+- 回答・作業記述は **日本語** で行うこと
+
+---
+
+## 1. プロジェクト概要
+
+このプロジェクトは、Google Chat, Gemini, ChatGPT 等のチャットサービスにおいて、`Enter` キーで改行し、`Ctrl+Enter` (Macの場合は `Cmd+Enter`) で送信するための Chrome 拡張機能 `enter2ctrlEnter` です。
+フレームワークとして **WXT (Web Extension Toolbox)** を使用し、**React** と **TypeScript** で開発されています。
+
+### 1.1 ポート・環境
+
+- WXT 開発サーバー: デフォルト設定を使用。
+- ※本プロジェクトは現在、外部APIサーバーを必要とせず、拡張機能単体で動作します。
+
+### 1.2 技術スタック
+
+- **Framework**: [WXT](https://wxt.dev/)
+- **Frontend**: React 19, Tailwind CSS (推奨)
+- **Language**: TypeScript
+- **Storage**: WXT の `storage` モジュールを使用して設定を同期。
+
+### 1.3 動作対象サイト
+
+- `https://chat.google.com/*`
+- `https://gemini.google.com/*`
+- `https://chatgpt.com/*`
+
+---
+
+## 2. コンテキスト制御（AIルール）
+
+### 2.1 `.geminiignore` の遵守
+
+- `node_modules/`, `.wxt/`, `dist/` 等の自動生成物は AI コンテキストから除外します。
+- 原則として除外対象は **list / read / search / attach** しないでください。
+
+---
+
+## 3. 開発・Git運用規約
+
+### 3.1 ブランチ運用（必須）
+
+- **mainブランチでの直接作業は禁止** です。
+- 新機能や修正の際は必ず専用ブランチ (`feat-xxx`, `fix-xxx`) を作成してください。
+
+### 3.2 終了時の手順
+
+1. `git add -A`
+2. コミット（変更内容のサマリを本文に記載）
+3. `git push -u origin <ブランチ名>`
+4. PR (Pull Request) の作成
+
+### 3.3 コミットメッセージ
+
+- 1行目に簡潔な要約。
+- 本文に変更内容のサマリを箇条書きで記載する。
+
+---
+
+## 4. Chrome拡張機能開発のベストプラクティス
+
+- **Content Scripts**: ターゲットサイトの DOM 干渉を最小限に抑える。
+- **Permissions**: `manifest` (in `wxt.config.ts`) には最小限の権限のみを定義する。
+- **Security**: `eval()` の使用禁止、信頼できないソースからのスクリプト読み込み禁止。
+- **Performance**: 重い処理は Background (Service Worker) で行い、Content Script のイベントリスナーは効率的に実装する。
+
+---
+
+## 5. 検証手順
+
+- 変更後は `npm run dev` で拡張機能を起動し、対象サイトで動作を確認してください。
+- `utils/*.test.ts` が存在する場合は `vitest` 等でテストを実行してください。
+
+---
+
+## TODO（作業時のチェックリスト）
+
+- [ ] ブランチ作成 (`feat-` / `fix-`)
+- [ ] 実装
+- [ ] 実装内容のテスト / 動作確認
+- [ ] `git add -A`
+- [ ] コミット（本文に変更サマリを記載）
+- [ ] push
+- [ ] PR作成
