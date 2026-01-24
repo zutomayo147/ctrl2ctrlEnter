@@ -8,6 +8,7 @@ export default defineConfig({
     permissions: ["storage"],
     host_permissions: [
       "https://chat.google.com/*",
+      "https://mail.google.com/*",
       "https://gemini.google.com/*",
       "https://chatgpt.com/*",
     ],

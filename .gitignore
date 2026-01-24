@@ -13,6 +13,7 @@ stats.html
 stats-*.json
 .wxt
 web-ext.config.ts
+/tests/e2e/.user-data
 
 # Editor directories and files
 .vscode/*
